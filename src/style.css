@@ -1,0 +1,527 @@
+:root {
+  --sidebar-color: #ffce66;
+  --logo-color: #ff552b;
+  --header-color: #f8efed;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(255 255 255 / .5);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255 255 255 / .3);
+  border-radius: 10px;
+}
+
+body {
+  padding: 30px 60px;
+
+  box-sizing: border-box;
+
+  font-family: "Montserrat", sans-serif;
+
+  max-width: 1920px;
+  margin: 0 auto;
+
+  background-color: azure;
+}
+
+svg {
+  width: 30px;
+}
+
+/* LAYOUT */
+
+.app {
+  height: 800px;
+
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 300px 1fr;
+
+  border: 1px solid rgb(0 0 0 / 0.1);
+}
+
+.header {
+  background-color: var(--header-color);
+
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.sidebar {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+
+  background-color: var(--sidebar-color);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logo {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+
+  background-color: var(--logo-color);
+}
+
+.content {
+  background-color: white;
+}
+
+/* DESIGN */
+
+.logo {
+  color: #fff;
+
+  font-size: 40px;
+
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-img svg {
+  width: 50px;
+}
+
+.sidebar-img svg path {
+  fill: #fff;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.sidebar-text {
+  color: #fff;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.sidebar-text:hover {
+  color: rgb(255 255 255 / 0.7);
+  cursor: pointer;
+}
+
+.projects {
+  max-height: 200px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+}
+
+.projects-title {
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  color: white;
+  font-weight: 400;
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.projects-title:hover {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.projects-see-all svg {
+  width: 50px;
+  fill: #fff;
+}
+
+.project-img svg {
+  width: 30px;
+  fill: #fff;
+}
+
+.project {
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 15px;
+
+  color: white;
+}
+
+.project-name:hover {
+  cursor: pointer;
+
+  color: rgb(255 255 255 / 0.7);
+}
+
+.content {
+  padding: 30px 40px;
+}
+
+.content__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  font-size: 25px;
+}
+
+.todo__checkbox {
+  display: none;
+}
+
+.todo__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+.todo__title::before {
+  content: "";
+  display: block;
+
+  width: 25px;
+  height: 25px;
+
+  border: 2px solid rgb(0 0 0 / .5);
+
+  border-radius: 50%;
+
+  background-color: rgb(0 0 0 / .3);
+}
+
+.todo__project-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.todo__project-img svg {
+  width: 20px;
+  fill: rgb(0 0 0 / .5);
+}
+
+.todo__duedate {
+  margin-left: 35px;
+  color: #08b39c;
+}
+
+.todo__project-name {
+  color: rgb(0 0 0 / .5);
+}
+
+.todo__duedate, .todo__project-name {
+  font-size: 15px;
+}
+
+.todo__text {
+  flex: 1 0 80%;
+}
+
+.todo__settings {
+  flex: 1 0 10%;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.todo__settings:hover svg {
+  fill: rgb(0 0 0 / .5);
+}
+
+.todo__add-task--btn, .todo__add-project--btn {
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+}
+
+.todo__add-task--btn:hover, .todo__add-project--btn:hover {
+  color: rgb(0 0 0 / .5);
+  cursor: pointer;
+}
+
+.todo__add-task--icon, .todo__add-project--icon {
+  width: 25px;
+  height: 25px;
+
+  color: var(--header-color);
+
+  border-radius: 50%;
+  background-color: var(--logo-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo__add-task--btn:hover .todo__add-task--icon,
+.todo__add-project--btn:hover .todo__add-project--icon {
+  color: var(--sidebar-color);
+}
+
+.todo__add-task {
+  margin-top: 30px;
+
+  font-weight: 300;
+
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo__add-task input {
+  border: none;
+  outline: none;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: inherit;
+}
+
+input.todo__add-task--name {
+  font-weight: 500;
+}
+
+input.todo__add-task--description {
+  font-size: 15px;
+}
+
+.todo__add-task--settings {
+  margin-top: 5px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.duedate, .priority {
+  margin-top: 5px;
+}
+
+.duedate-title, .priority-title { 
+  font-size: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  border: 1px solid rgb(0 0 0 / .5);
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+
+.duedate-title:hover, .priority-title:hover {
+  background-color: rgb(229 229 229 / .7);
+
+  cursor: pointer;
+}
+
+.todo__add-task--add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo__add-task--project-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.todo__add-task--project-img svg {
+  width: 10px;
+}
+
+.todo__add-task--cancel-text {
+  margin-left: auto;
+}
+
+.todo__add-task--add {
+  margin-top: 20px;
+}
+
+.todo__add-task--add-text, .add-project__add {
+  background-color: var(--logo-color);
+  color: var(--header-color);
+  padding: 5px 15px;
+
+  cursor: pointer;
+}
+
+.todo__add-task--add-text:hover, .add-project__add:hover {
+  background-color: rgb(255 85 43 / .8);
+}
+
+.todo__add-task--cancel-text, .todo__add-task--project-title, .add-project__cancel  {
+  background-color: rgb(229, 229, 229);
+  padding: 5px 15px;
+
+  cursor: pointer;
+}
+
+.todo__add-task--cancel-text:hover, .todo__add-task--project-title:hover, .add-project__cancel:hover {
+  background-color: rgb(229, 229, 229, .8);
+}
+
+.add-project {
+  margin-top: 30px;
+}
+
+.add-project__title {
+  font-family: inherit;
+  font-size: inherit;
+
+  border: none;
+  outline: none;
+
+  padding: 5px;
+
+  width: 100%;
+}
+
+.add-project__buttons {
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.priority, .duedate {
+  position: relative;
+}
+
+.priority__settings, .duedate__settings {
+  position: absolute;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border: 1px solid rgb(0 0 0 / .5);
+  border-radius: 5px;
+}
+
+.priority__item, .duedate__item {
+  font-size: 13px;
+
+  padding: 5px 20px;
+
+  background-color: white;
+
+  width: 100%;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.priority__item:hover, .duedate__item:hover {
+  background-color: rgb(229 229 229);
+}
+
+.low, .medium, .high, .none {
+  display: block;
+
+  width: 20px;
+  height: 20px;
+  
+  background-color: #08b39c;
+
+  border-radius: 50%;
+}
+
+.medium {
+  background-color: #ffce66;
+}
+
+.high {
+  background-color: #ff552b;
+}
+
+.none {
+  background-color: rgb(229 229 229);
+}
+
+.hidden {
+  display: none;
+}
+
+input[type=date] {
+  padding: 5px 20px;
+
+  width: 100%;
+
+  font-size: inherit;
+}
+
+.todo__add-task--project {
+  position: relative;
+}
+
+.todo__add-task--project-projects {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+
+  background-color: white;
+
+
+  border: 1px solid rgb(0 0 0 / .5);
+  border-radius: 5px;
+}
+
+.todo__add-task--item {
+  padding: 5px 20px;
+
+  cursor: pointer;
+}
+
+.todo__add-task--item:hover {
+  background-color: rgb(229 229 229);
+}
