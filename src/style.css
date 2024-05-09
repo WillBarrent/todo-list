@@ -120,7 +120,7 @@ svg {
 }
 .sidebar-text {
   color: #fff;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
 }
 
@@ -146,7 +146,7 @@ svg {
   gap: 15px;
 
   color: white;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
 
   cursor: pointer;
@@ -178,6 +178,10 @@ svg {
   color: white;
 }
 
+.project-name {
+  font-weight: 500;
+}
+
 .project-name:hover {
   cursor: pointer;
 
@@ -188,7 +192,7 @@ svg {
   padding: 30px 40px;
 }
 
-.content__form {
+.todo__form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -488,10 +492,6 @@ input.todo__add-task--description {
   background-color: rgb(229 229 229);
 }
 
-.hidden {
-  display: none;
-}
-
 input[type=date] {
   padding: 5px 20px;
 
@@ -524,4 +524,44 @@ input[type=date] {
 
 .todo__add-task--item:hover {
   background-color: rgb(229 229 229);
+}
+
+.todo__settings {
+  position: relative;
+}
+
+.todo__settings-all {
+  background-color: white;
+
+  box-shadow: 1px 1px 5px rgb(0 0 0 / .4);
+
+  font-size: 16px;
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.todo__settings-item {
+  padding: 10px 20px;
+}
+
+.todo__settings-item:hover {
+  background-color: rgb(229 229 229);
+}
+
+.duedate__settings {
+  z-index: 1000;
+}
+
+.priority__settings {
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
 }
