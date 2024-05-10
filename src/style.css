@@ -562,6 +562,34 @@ input[type=date] {
   z-index: 1000;
 }
 
+.project-settings {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.project-settings svg {
+  width: 25px;
+}
+
+.project-settings-rename {
+  fill: #0cce00;
+  cursor: pointer;
+}
+
+.project-settings-rename:hover {
+  fill: #22f117;
+}
+
+.project-settings-delete {
+  fill: #cd004d;
+  cursor: pointer;
+}
+
+.project-settings-delete:hover {
+  fill: #ff0f6b;
+}
+
 .hidden {
   display: none;
 }
