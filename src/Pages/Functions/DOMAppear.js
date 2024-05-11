@@ -6,6 +6,10 @@ function appearDOMElement(where, what) {
     }
 }
 
+function afterAppearDOMElement(from, what) {
+    from.after(what);
+}
+
 function createDOMElement(type, className) {
     const element = document.createElement(type);
     element.className = className;
@@ -21,7 +25,7 @@ function createButton(elementName, className, textContent) {
 }
 
 function createInput(type = 'text', className, placeholder, id = '', value = '', name = '') {
-    const input = createDOMElement('input', 'todo__add-task');
+    const input = createDOMElement('input', className);
     input.className = className;
     input.type = type;
     input.placeholder = placeholder;
@@ -31,4 +35,4 @@ function createInput(type = 'text', className, placeholder, id = '', value = '',
     return input;
 }
 
-export { appearDOMElement, createDOMElement, createButton, createInput };
+export { appearDOMElement, afterAppearDOMElement, createDOMElement, createButton, createInput };

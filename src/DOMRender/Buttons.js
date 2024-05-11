@@ -1,4 +1,4 @@
-class Buttons {
+export class Buttons {
   projectsDropdownButton() {
     const projectsTitle = document.querySelector(".projects-title");
     const allProjects = document.querySelector(".projects");
@@ -46,6 +46,16 @@ class Buttons {
     cancelButton.addEventListener("click", function () {
       projectButton.classList.remove("hidden");
       projectForm.classList.add("hidden");
+    });
+  }
+
+  projectCancelUpdateButton() {
+    const updateForm = document.querySelectorAll('.project-edit-form');
+    updateForm.forEach(form => {
+      const cancelButton = form.querySelector('.add-project__cancel');
+      cancelButton.addEventListener('click', function() {
+        form.remove();
+      });
     });
   }
 

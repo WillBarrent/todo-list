@@ -1,15 +1,17 @@
 import "./style.css";
 
-import Page from "./DOM/Page";
-import Projects from "./DOM/Projects";
-import ButtonsInvoke from "./DOM/Buttons";
+import Page from "./DOMRender/Page";
+import Projects from "./DOMRender/Projects";
+import ButtonsInvoke from "./DOMRender/Buttons";
 import { pageContent } from "./Pages/AllTodo";
 import { projectFormRender } from "./Pages/Components/Project";
 import { addDefaultProjectItem, getProjectItem } from "./Application/Project";
+import { createProjectForm } from "./Pages/Components/ProjectForm";
 
 // Page.pageLoaderInvoke();
 
 addDefaultProjectItem();
+createProjectForm();
 
 Projects.projectLoaderInvoke();
 pageContent();

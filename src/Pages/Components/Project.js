@@ -1,17 +1,43 @@
-import { addProjectItem } from "../../Application/Project";
-import Projects from "../../DOM/Projects";
+import { addProjectItem, updateProjectItem } from "../../Application/Project";
+import Projects from "../../DOMRender/Projects";
+import { afterAppearDOMElement } from "../Functions/DOMAppear";
+import { createProjectForm } from "./ProjectForm";
 
-const addProject = document.querySelector('.add-project__add');
-const projectTitle = document.querySelector('.add-project__title');
+const addProject = document.querySelector(".add-project__add");
+const projectTitle = document.querySelector(".add-project__title");
 
-export function projectFormRender() {
-    addProject.addEventListener('click', function() {
+function projectFormRender() {
+  addProject.addEventListener("click", function () {
+    try {
+      addProjectItem(projectTitle.value);
+      Projects.projectLoaderInvoke();
+    } catch (e) {
+      console.log("ERROR");
+    }
+  });
+}
+
+function projectFormUpdateRender(project) {
+    afterAppearDOMElement(project, createProjectForm('Edit'));
+
+    const updateForm = document.querySelector('.project-edit-form');
+    const updateButton = updateForm.querySelector('.add-project__add');
+    const projectTitle = project.querySelector('.project-name').textContent;
+
+    updateButton.addEventListener('click', function() {
         try {
-            addProjectItem(projectTitle.value);
+            if (projectTitle === 'Default') throw new Error();
+
+            const input = updateForm.querySelector('input');
+            updateProjectItem(input.value, projectTitle);
+
             Projects.projectLoaderInvoke();
+            Projects.projectPageUpdate(input.value);
         }
         catch(e) {
-            console.log("That`s title already exist");
+            console.log("ERROR");
         }
-    })
+    });
 }
+
+export { projectFormRender, projectFormUpdateRender };

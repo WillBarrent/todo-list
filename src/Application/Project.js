@@ -6,6 +6,7 @@ function addDefaultProjectItem() {
 }
 
 function addProjectItem(title = "None") {
+  title = title.split(" ")[0];
   if (
     title.length <= 0 ||
     !(typeof title == "string") ||
@@ -14,8 +15,6 @@ function addProjectItem(title = "None") {
     console.log("Item already exist or you`ve created empty project title");
     throw new Error();
   }
-
-  title = title.split(" ")[0];
   localStorage.setItem(
     title,
     JSON.stringify({
@@ -25,9 +24,31 @@ function addProjectItem(title = "None") {
   );
 }
 
+function updateProjectItem(newTitle, title) {
+  if (localStorage.getItem(newTitle) || newTitle.length <= 0 && newTitle.toLowerCase() === 'default') {
+    console.log("This name of project already exist or you`ve named it with empty field")
+    console.log("Remember that you can not create project named as Default")
+    throw new Error();
+  };
+
+  const projectTodos = [...JSON.parse(localStorage.getItem(title)).todoItems];
+  deleteProjectItem(title);
+  localStorage.setItem(
+    newTitle,
+    JSON.stringify({
+      projectName: newTitle,
+      todoItems: projectTodos,
+    })
+  );
+}
+
+function deleteProjectItem(title) {
+  localStorage.removeItem(title);
+}
+
 function getProjectItem(title) {
   const projectItem = JSON.parse(localStorage.getItem(title));
   return projectItem;
 }
 
-export { addProjectItem, addDefaultProjectItem, getProjectItem };
+export { addProjectItem, deleteProjectItem, updateProjectItem, addDefaultProjectItem, getProjectItem };
