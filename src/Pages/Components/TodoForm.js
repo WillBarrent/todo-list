@@ -81,19 +81,12 @@ function createSettingsTitle(title, image, textContent) {
 function createDuedateSettings() {
   const div = createDOMElement('div', 'duedate__settings');
   div.classList.add('hidden');
-  const today = createDuedateItem('Today');
-  const tomorrow = createDuedateItem('Tomorrow');
-  const nextWeek = createDuedateItem('Next Week');
-
-  appearDOMElement(div, today);
-  appearDOMElement(div, tomorrow);
-  appearDOMElement(div, nextWeek);
 
   const calendar = createDOMElement('div', 'duedate__item');
   const label = createDOMElement('label', 'duedate__label');
-  label.textContent = 'Custom';
+  label.textContent = 'Date: ';
   label.for = 'date';
-  const input = createInput('date', 'duedate__date', '', 'date', '2125-01-01');
+  const input = createInput('date', 'duedate__date', '', 'date', '2025-01-01');
   appearDOMElement(calendar, label);
   appearDOMElement(calendar, input);
 
@@ -140,20 +133,10 @@ function createTodoSubmit() {
 
   appearDOMElement(projectTitle, projectImage);
   appearDOMElement(projectTitle, projectText);
-  
-  appearDOMElement(allProjects, createProjectItem('Default'));
-  appearDOMElement(allProjects, createProjectItem('Default'));
-  appearDOMElement(allProjects, createProjectItem('Default'));
 
   appearDOMElement(div, createButton('div', 'todo__add-task--cancel-text', 'Cancel'));
   appearDOMElement(div, createButton('div','todo__add-task--add-text', 'Add'));
 
-  return div;
-}
-
-function createDuedateItem(text) {
-  const div = createDOMElement('div', 'duedate__item');
-  div.textContent = text;
   return div;
 }
 

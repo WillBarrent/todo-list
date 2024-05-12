@@ -200,6 +200,16 @@ svg {
   font-size: 25px;
 }
 
+.todo__item {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid rgb(0 0 0 / .1);
+}
+
+.todo__item:last-child {
+  border: none;
+}
+
 .todo__checkbox {
   display: none;
 }

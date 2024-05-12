@@ -52,9 +52,6 @@ function createTodoItem(title = 'Title', duedate = 'none', priority = 'none', pr
     appearDOMElement(projectName, projectImg);
     appearDOMElement(projectName, projectTitle);
 
-    const content = document.querySelector('.content');
-    appearDOMElement(content, div);
-
     return div;
 }
 

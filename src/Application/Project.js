@@ -51,4 +51,9 @@ function getProjectItem(title) {
   return projectItem;
 }
 
-export { addProjectItem, deleteProjectItem, updateProjectItem, addDefaultProjectItem, getProjectItem };
+function getAllProjectItems() {
+  const allProjects = Object.entries(localStorage);
+  return Array.from(allProjects);
+}
+
+export { addProjectItem, deleteProjectItem, updateProjectItem, addDefaultProjectItem, getProjectItem, getAllProjectItems };

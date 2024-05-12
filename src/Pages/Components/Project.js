@@ -11,7 +11,9 @@ function projectFormRender() {
     try {
       addProjectItem(projectTitle.value);
       Projects.projectLoaderInvoke();
+      Projects.projectDropdownLoader();
     } catch (e) {
+      console.log(e);
       console.log("ERROR");
     }
   });
@@ -33,6 +35,7 @@ function projectFormUpdateRender(project) {
 
             Projects.projectLoaderInvoke();
             Projects.projectPageUpdate(input.value);
+            Projects.projectDropdownLoader();
         }
         catch(e) {
             console.log("ERROR");

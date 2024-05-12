@@ -2,12 +2,17 @@ function appearDOMElement(where, what) {
     try {
         where.appendChild(what);
     } catch (error) {
+        console.log(error)
         console.log("Maybe your input is wrong")
     }
 }
 
 function afterAppearDOMElement(from, what) {
     from.after(what);
+}
+
+function beforeAppearDOMElement(from, what) {
+    from.prepend(what);
 }
 
 function createDOMElement(type, className) {
@@ -35,4 +40,4 @@ function createInput(type = 'text', className, placeholder, id = '', value = '',
     return input;
 }
 
-export { appearDOMElement, afterAppearDOMElement, createDOMElement, createButton, createInput };
+export { appearDOMElement, afterAppearDOMElement, beforeAppearDOMElement, createDOMElement, createButton, createInput };
