@@ -13,16 +13,24 @@ export default class Todo {
       (item) => JSON.parse(item[1]).todoItems.reverse()
     ).reverse();
     const content = document.querySelector('.content');
-    content.textContent = ``;
+    const listOfTodo = createDOMElement('div', 'todo__items-list');
+    beforeAppearDOMElement(content, listOfTodo);
     allItems.forEach(project => {
         project.forEach(item => {
             const todoItem = createTodoItem(item.title, item.duedate.todoItem, item.priority, item.project);
-            beforeAppearDOMElement(content, todoItem);
+            beforeAppearDOMElement(listOfTodo, todoItem);
         })
     });
   }
 
+  static todoItemsClear() {
+    const items = document.querySelectorAll('.todo__item');
+
+    items.forEach(item => item.remove());
+  }
+
   static todoLoaderInvoke() {
+    Todo.todoItemsClear();
     Todo.todoLoader();
   }
 }
