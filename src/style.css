@@ -258,6 +258,12 @@ svg {
   border-radius: 50%;
 
   background-color: rgb(0 0 0 / .3);
+
+  cursor: pointer;
+}
+
+.todo__title:hover todo__title::before {
+  background-color: rgb(0 0 0 / .8);
 }
 
 .todo__project-name {

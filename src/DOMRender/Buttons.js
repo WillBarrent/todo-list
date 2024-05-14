@@ -1,5 +1,5 @@
 export class Buttons {
-  projectsDropdownButton() {
+  static projectsDropdownButton() {
     const projectsTitle = document.querySelector(".projects-title");
     const allProjects = document.querySelector(".projects");
     const img = document.querySelector(".projects-see-all");
@@ -98,7 +98,7 @@ export class Buttons {
     priority.classList.add("hidden");
     project.classList.add("hidden");
 
-    settings.classList.remove("hidden");
+    settings?.classList.remove("hidden");
   }
 
   todoDuedateButton() {
@@ -140,7 +140,6 @@ export class Buttons {
 export default function ButtonsInvoke() {
   const Button = new Buttons();
 
-  Button.projectsDropdownButton();
   Button.todoAddButton();
   Button.todoCancelAddButton();
   Button.projectAddButton();

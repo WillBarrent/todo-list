@@ -1,9 +1,13 @@
-const header = `All To-Do Tasks In Next 7 Days`;
+import { getNextWeekItems } from "../Application/Todo";
+import ButtonsInvoke, { Buttons } from "../DOMRender/Buttons";
+import Todo from "../DOMRender/Todo";
 
-const pageContent = `
-    <p>Paragraph</p>
-`;
+export function nextWeekContent() {
+    const header = document.querySelector('.header');
+    const content = document.querySelector('.content');
 
-export default function NextWeekPage() {
-    return [header, pageContent];
+    header.textContent = 'Next 7 Day';
+    content.innerHTML = ``;
+
+    Todo.todoNextWeekLoader();
 }

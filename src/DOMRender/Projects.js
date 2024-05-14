@@ -3,6 +3,7 @@ import { projectFormUpdateRender } from "../Pages/Components/Project";
 import { createProjectItem } from "../Pages/Components/ProjectItem";
 import { appearDOMElement, createDOMElement } from "../Pages/Functions/DOMAppear";
 import { Buttons } from "./Buttons";
+import Page from "./Page";
 
 const content = document.querySelector(".content");
 const header = document.querySelector(".header");
@@ -25,6 +26,7 @@ export default class Projects {
           .closest(".project")
           .querySelector(".project-name").textContent;
         deleteProjectItem(projectName);
+        Page.defaultPage();
         Projects.projectLoaderInvoke();
       });
     });
@@ -72,10 +74,10 @@ export default class Projects {
 
   static projectDropdownLoader() {
     const allProjects = document.querySelector('.todo__add-task--project-projects');
-    allProjects.innerHTML = ``;
+    if (allProjects) allProjects.innerHTML = ``;
     
     const allProjectsArray = getAllProjectItems();
-    allProjectsArray.forEach(project => appearDOMElement(allProjects, Projects.createDropdownProjectItem(project[0])));
+    allProjectsArray?.forEach(project => appearDOMElement(allProjects, Projects.createDropdownProjectItem(project[0])));
   }
 
   static projectLoaderInvoke() {
@@ -83,8 +85,6 @@ export default class Projects {
 
     Projects.projectSidebarDelete();
     Projects.projectSidebarRename();
-    
-    Projects.projectDropdownLoader();
 
     sidebar.addEventListener("click", Projects.projectPageLoader);
   }

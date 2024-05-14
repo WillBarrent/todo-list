@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { getProjectItem } from "./Project";
+import { getAllProjectItems, getProjectItem } from "./Project";
 
 function addDefaultTodoItem() {
   const date = new Date();
@@ -52,4 +52,36 @@ function addTodoItem(
   );
 }
 
-export { addTodoItem, addDefaultTodoItem };
+function getTodayTodoItems() {
+  const allTodayItems = [];
+
+  const todayDate = format((new Date()), "MM/dd/yy");
+  const allItems = getAllProjectItems();
+  allItems.forEach((item) => {
+    JSON.parse(item[1]).todoItems.forEach(item => {
+      if (item.duedate.sort === todayDate) {
+        allTodayItems.push(item);
+      }
+    }); 
+  });
+
+  return allTodayItems;
+}
+
+function getNextWeekItems() {
+  const allNextWeekItems = [];
+  const todayDate = format((new Date()), "MM/dd/yy").split('/');
+  const allItems = getAllProjectItems();
+  allItems.forEach((item) => {
+    JSON.parse(item[1]).todoItems.forEach(item => {
+      const date = item.duedate.sort.split('/');
+      if (date[1] - todayDate[1] <= 7 && date[0] === todayDate[0] && date[2] === todayDate[2]) {
+        allNextWeekItems.push(item);
+      }
+    }); 
+  });
+
+  return allNextWeekItems;
+}
+
+export { addTodoItem, addDefaultTodoItem, getTodayTodoItems, getNextWeekItems };

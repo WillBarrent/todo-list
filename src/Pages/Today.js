@@ -1,9 +1,12 @@
-const header = `All To-Do Tasks Today`;
+import ButtonsInvoke, { Buttons } from "../DOMRender/Buttons";
+import Todo from "../DOMRender/Todo";
 
-const pageContent = `
+export function todayContent() {
+    const header = document.querySelector('.header');
+    const content = document.querySelector('.content');
 
-`;
+    content.innerHTML = '';
+    Todo.todoTodayLoader();
 
-export default function TodayPage() {
-    return [header, pageContent];
+    header.textContent = 'Today';
 }

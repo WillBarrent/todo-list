@@ -11,7 +11,7 @@ function projectFormRender() {
     try {
       addProjectItem(projectTitle.value);
       Projects.projectLoaderInvoke();
-      Projects.projectDropdownLoader();
+      // Projects.projectDropdownLoader();
     } catch (e) {
       console.log(e);
       console.log("ERROR");
