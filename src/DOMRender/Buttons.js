@@ -80,13 +80,19 @@ export class Buttons {
     });
   }
 
-  todoSettingsButton() {
-    const todoSettings = document.querySelector(".todo__settings");
-    const todoSettingsForm = document.querySelector(".todo__settings-all");
+  static todoSettingsButton() {
+    const todoSettings = document.querySelectorAll(".todo__settings");
+    const todoSettingsForm = document.querySelectorAll(".todo__settings-all");
 
-    todoSettings?.addEventListener("click", () =>
-      todoSettingsForm.classList.toggle("hidden")
-    );
+    todoSettings?.forEach(settings => {
+      settings.addEventListener('click', function() {
+        const item = settings.querySelector('.todo__settings-all');
+        if (item.classList.contains('hidden')) {
+          todoSettingsForm.forEach(form => form.classList.add('hidden'));
+        }
+        item.classList.toggle('hidden');
+      });
+    });
   }
 
   todoClearAnotherButton(settings) {
@@ -145,7 +151,6 @@ export default function ButtonsInvoke() {
   Button.projectAddButton();
   Button.projectAddNewButton();
   Button.projectCancelButton();
-  Button.todoSettingsButton();
   Button.todoDuedateButton();
   Button.todoPriorityButton();
   Button.todoChooseProjectButton();

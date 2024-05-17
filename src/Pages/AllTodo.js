@@ -5,7 +5,6 @@ import { todoFormRender } from "./Components/Todo";
 import { createTodoItemForm, createTodoAddForm } from "./Components/TodoForm";
 import { appearDOMElement } from "./Functions/DOMAppear";
 
-// Rebuild it with JavaScript Methods
 export function allTodoContent() {
     const header = document.querySelector('.header');
     const content = document.querySelector('.content');
@@ -21,5 +20,6 @@ export function allTodoContent() {
 
     todoFormRender();
     ButtonsInvoke();
+    Buttons.todoSettingsButton();
     Projects.projectDropdownLoader();
 }

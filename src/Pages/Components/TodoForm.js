@@ -28,7 +28,7 @@ function createTodoButtons() {
   return div;
 }
 
-function createTodoAddForm() {
+function createTodoAddForm(projectName = 'Default') {
   const form = createDOMElement('form', 'todo__add-task');
   form.classList.add('hidden');
 
@@ -39,7 +39,7 @@ function createTodoAddForm() {
   appearDOMElement(form, inputDescription);
 
   appearDOMElement(form, createTodoSettings());
-  appearDOMElement(form, createTodoSubmit());
+  appearDOMElement(form, createTodoSubmit(projectName));
 
   return form;
 }
@@ -112,7 +112,7 @@ function createPrioritySettings() {
   return div;
 }
 
-function createTodoSubmit() {
+function createTodoSubmit(projectName = 'Default') {
   const div = createDOMElement('div', 'todo__add-task--add');
 
   const project = createDOMElement('div', 'todo__add-task--project');
@@ -121,7 +121,7 @@ function createTodoSubmit() {
   const projectText = createDOMElement('span', 'todo__add-task--project-text');
 
   projectImage.innerHTML = images()['project'];
-  projectText.textContent = 'Default';
+  projectText.textContent = projectName;
 
   const allProjects = createDOMElement('div', 'todo__add-task--project-projects');
   allProjects.classList.add('hidden');

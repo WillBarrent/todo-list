@@ -89,6 +89,8 @@ svg {
 
 .content {
   background-color: white;
+
+  position: relative;
 }
 
 /* DESIGN */
@@ -577,12 +579,14 @@ input[type=date] {
   font-size: 16px;
 
   position: absolute;
-  top: 100%;
-  left: 50%;
+  top: 50%;
+  left: 0px;
 
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  z-index: 200000;
 }
 
 .todo__settings-item {
@@ -631,4 +635,58 @@ input[type=date] {
 
 .hidden {
   display: none;
+}
+
+.content__info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  box-shadow: -6px -3px 20px 2000px rgb(0 0 0 / .3);
+  padding: 20px 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 500px;
+}
+
+.content__close--btn {
+  background-color: rgb(229, 229, 229);
+  padding: 5px 15px;
+
+  cursor: pointer;
+}
+
+.content__close--btn:hover {
+  background-color: rgba(229, 229, 229, .8);
+}
+
+.content__name, .content__description, .content__duedate, .content__priority, .content__project {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: justify;
+}
+
+.content__description {
+  margin: 10px 0;
+}
+
+.content__label-name {
+  font-weight: bold;
+}
+
+.content__close {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.content__close--btn {
+  width: 50%;
+  
+  text-align: center;
 }

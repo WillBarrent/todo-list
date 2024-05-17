@@ -30,7 +30,7 @@ function projectSettingsRender() {
   });
 }
 
-function todoFormRender() {
+function todoFormRender(projectName = "All") {
   const addTodo = document.querySelector(".todo__add-task--add-text");
   const nameTodo = document.querySelector(".todo__add-task--name");
   const descriptionTodo = document.querySelector(
@@ -48,8 +48,6 @@ function todoFormRender() {
       );
       const priorityTitle = document.querySelector(".priority-text");
 
-      console.log(priorityTitle.textContent)
-
       const date = new Date(duedate.value.split("-").join(", "));
       const dateForm = {
         todoItem: format(date, "MMMM dd", "en-US"),
@@ -63,7 +61,7 @@ function todoFormRender() {
         dateForm,
         priorityTitle.textContent ? priorityTitle.textContent : "None",
       );
-      Todo.todoLoaderInvoke();
+      Todo.todoLoaderInvoke(projectName);
 
       nameTodo.value = "";
       descriptionTodo.value = "";
@@ -73,6 +71,8 @@ function todoFormRender() {
     }
   });
 }
+
+
 
 function todoFormUpdateRender() {}
 

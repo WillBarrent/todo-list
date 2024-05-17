@@ -2,6 +2,7 @@ import { deleteProjectItem, getAllProjectItems } from "../Application/Project";
 import { projectFormUpdateRender } from "../Pages/Components/Project";
 import { createProjectItem } from "../Pages/Components/ProjectItem";
 import { appearDOMElement, createDOMElement } from "../Pages/Functions/DOMAppear";
+import { projectPageContent } from "../Pages/ProjectPage";
 import { Buttons } from "./Buttons";
 import Page from "./Page";
 
@@ -86,6 +87,6 @@ export default class Projects {
     Projects.projectSidebarDelete();
     Projects.projectSidebarRename();
 
-    sidebar.addEventListener("click", Projects.projectPageLoader);
+    sidebar.addEventListener("click", projectPageContent);
   }
 }

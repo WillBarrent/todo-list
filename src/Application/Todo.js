@@ -84,4 +84,19 @@ function getNextWeekItems() {
   return allNextWeekItems;
 }
 
-export { addTodoItem, addDefaultTodoItem, getTodayTodoItems, getNextWeekItems };
+function getProjectTodoItems(projectName) {
+  const allItems = getAllProjectItems();
+  const projectTodos = [];
+
+  allItems.forEach(item => {
+    if (JSON.parse(item[1]).projectName == projectName) {
+      JSON.parse(item[1]).todoItems.forEach(todo => {
+        projectTodos.push(todo);
+      })
+    }
+  });
+
+  return projectTodos;
+}
+
+export { addTodoItem, addDefaultTodoItem, getTodayTodoItems, getNextWeekItems, getProjectTodoItems };
