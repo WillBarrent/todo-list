@@ -13,6 +13,8 @@ function createTodoItem(title = 'Title', duedate = 'none', priority = 'none', pr
     const label = createDOMElement('label', 'todo__title');
     label.dataset.priority = priority;
 
+    const circle = createDOMElement('span', 'todo__title--circle');
+
     const text = createDOMElement('span', 'todo__text');
     text.textContent = title;
 
@@ -37,6 +39,7 @@ function createTodoItem(title = 'Title', duedate = 'none', priority = 'none', pr
     appearDOMElement(div, input);
     appearDOMElement(div, label);
 
+    appearDOMElement(label, circle);
     appearDOMElement(label, text);
     appearDOMElement(label, settings);
 

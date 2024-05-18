@@ -1,3 +1,6 @@
+import { completeTodoRender, deleteAllEditItem, todoFormIntermediateRender } from "../Pages/Components/Todo";
+import Todo from "./Todo";
+
 export class Buttons {
   static projectsDropdownButton() {
     const projectsTitle = document.querySelector(".projects-title");
@@ -50,10 +53,10 @@ export class Buttons {
   }
 
   projectCancelUpdateButton() {
-    const updateForm = document.querySelectorAll('.project-edit-form');
-    updateForm.forEach(form => {
-      const cancelButton = form.querySelector('.add-project__cancel');
-      cancelButton.addEventListener('click', function() {
+    const updateForm = document.querySelectorAll(".project-edit-form");
+    updateForm.forEach((form) => {
+      const cancelButton = form.querySelector(".add-project__cancel");
+      cancelButton.addEventListener("click", function () {
         form.remove();
       });
     });
@@ -66,6 +69,7 @@ export class Buttons {
     todoButton.addEventListener("click", function () {
       todoButton.classList.add("hidden");
       todoForm.classList.remove("hidden");
+      deleteAllEditItem();
     });
   }
 
@@ -77,6 +81,7 @@ export class Buttons {
     cancelButton.addEventListener("click", function () {
       todoButton.classList.remove("hidden");
       todoForm.classList.add("hidden");
+      deleteAllEditItem();
     });
   }
 
@@ -84,15 +89,23 @@ export class Buttons {
     const todoSettings = document.querySelectorAll(".todo__settings");
     const todoSettingsForm = document.querySelectorAll(".todo__settings-all");
 
-    todoSettings?.forEach(settings => {
-      settings.addEventListener('click', function() {
-        const item = settings.querySelector('.todo__settings-all');
-        if (item.classList.contains('hidden')) {
-          todoSettingsForm.forEach(form => form.classList.add('hidden'));
+    todoSettings?.forEach((settings) => {
+      settings.addEventListener("click", function (e) {
+        const item = settings.querySelector(".todo__settings-all");
+        if (e.target.classList.contains("todo__settings-item")) {
+          item.classList.toggle("hidden");
+          const functionName = e.target.textContent;
+          Todo.todoIntermediateMethod(functionName, e.target);
+        } else {
+          if (item.classList.contains("hidden")) {
+            todoSettingsForm.forEach((form) => form.classList.add("hidden"));
+          }
+          item.classList.toggle("hidden");
         }
-        item.classList.toggle('hidden');
       });
     });
+
+    completeTodoRender();
   }
 
   todoClearAnotherButton(settings) {
@@ -139,6 +152,16 @@ export class Buttons {
       project.classList.contains("hidden")
         ? this.todoClearAnotherButton(project)
         : project.classList.add("hidden");
+    });
+  }
+
+  static modalContentClose() {
+    const closeBtn = document.querySelector('.content__close--btn');
+
+    closeBtn.addEventListener('click', function(e) {
+      const modal = e.target;
+      
+      modal.closest('.content__info').remove();
     });
   }
 }

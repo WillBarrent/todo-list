@@ -28,9 +28,11 @@ function createTodoButtons() {
   return div;
 }
 
-function createTodoAddForm(projectName = 'Default') {
+function createTodoAddForm(projectName = 'Default', submitText = 'Add', className) {
   const form = createDOMElement('form', 'todo__add-task');
   form.classList.add('hidden');
+
+  if (className === "edit-form") form.classList.add("edit-form");
 
   const inputTitle = createInput('text', 'todo__add-task--name', 'Task name');
   const inputDescription = createInput('text', 'todo__add-task--description', 'Description');
@@ -39,7 +41,7 @@ function createTodoAddForm(projectName = 'Default') {
   appearDOMElement(form, inputDescription);
 
   appearDOMElement(form, createTodoSettings());
-  appearDOMElement(form, createTodoSubmit(projectName));
+  appearDOMElement(form, createTodoSubmit(projectName, submitText));
 
   return form;
 }
@@ -112,7 +114,7 @@ function createPrioritySettings() {
   return div;
 }
 
-function createTodoSubmit(projectName = 'Default') {
+function createTodoSubmit(projectName = 'Default', submitText = 'Add') {
   const div = createDOMElement('div', 'todo__add-task--add');
 
   const project = createDOMElement('div', 'todo__add-task--project');
@@ -134,8 +136,14 @@ function createTodoSubmit(projectName = 'Default') {
   appearDOMElement(projectTitle, projectImage);
   appearDOMElement(projectTitle, projectText);
 
+  const btn = createButton('div','todo__add-task--add-text', submitText);
+
+  if (submitText === "Edit") {
+    btn.classList.add("edit-form-btn");
+  }
+
   appearDOMElement(div, createButton('div', 'todo__add-task--cancel-text', 'Cancel'));
-  appearDOMElement(div, createButton('div','todo__add-task--add-text', 'Add'));
+  appearDOMElement(div, btn);
 
   return div;
 }

@@ -1,7 +1,7 @@
 import ButtonsInvoke, { Buttons } from "../DOMRender/Buttons";
 import Projects from "../DOMRender/Projects";
 import Todo from "../DOMRender/Todo";
-import { todoFormRender } from "./Components/Todo";
+import { completeTodoRender, todoFormRender } from "./Components/Todo";
 import { createTodoItemForm, createTodoAddForm } from "./Components/TodoForm";
 import { appearDOMElement } from "./Functions/DOMAppear";
 
@@ -20,6 +20,6 @@ export function allTodoContent() {
 
     todoFormRender();
     ButtonsInvoke();
-    Buttons.todoSettingsButton();
+    
     Projects.projectDropdownLoader();
 }

@@ -1,24 +1,26 @@
 import { getAllProjectItems, getProjectItem } from "../Application/Project";
-import { getNextWeekItems, getProjectTodoItems, getTodayTodoItems } from "../Application/Todo";
-import { todoFormRender } from "../Pages/Components/Todo";
+import {
+  getNextWeekItems,
+  getProjectTodoItems,
+  getTodayTodoItems,
+} from "../Application/Todo";
+import { completeTodoRender, deleteAllEditItem, todoFormDeleteRender, todoFormInfoRender, todoFormRender, todoFormUpdateRender } from "../Pages/Components/Todo";
 import { createTodoItem } from "../Pages/Components/TodoItem";
 import {
   appearDOMElement,
   beforeAppearDOMElement,
   createDOMElement,
 } from "../Pages/Functions/DOMAppear";
+import { Buttons } from "./Buttons";
 
 export default class Todo {
   static todoLoader(projectName = "All") {
-    const allItems = 
-    (projectName === "All") ?
-    getAllProjectItems()
-      .map((item) => JSON.parse(item[1]).todoItems.reverse())
-      .reverse()
-    :
-    [getProjectItem(projectName)
-      .todoItems
-      .reverse()];
+    const allItems =
+      projectName === "All"
+        ? getAllProjectItems()
+            .map((item) => JSON.parse(item[1]).todoItems.reverse())
+            .reverse()
+        : [getProjectItem(projectName).todoItems.reverse()];
 
     const content = document.querySelector(".content");
     const listOfTodo = createDOMElement("div", "todo__items-list");
@@ -34,6 +36,9 @@ export default class Todo {
         beforeAppearDOMElement(listOfTodo, todoItem);
       });
     });
+
+    Buttons.todoSettingsButton();
+    deleteAllEditItem();
   }
 
   static todoTodayLoader() {
@@ -96,5 +101,18 @@ export default class Todo {
   static todoLoaderInvoke(projectName = "All") {
     Todo.todoItemsClear();
     Todo.todoLoader(projectName);
+  }
+
+  static todoIntermediateMethod(fnName, e) {
+    const formMethodsName = ["Edit", "Delete", "Info"];
+    const formMethods = [
+      todoFormUpdateRender.bind(e),
+      todoFormDeleteRender.bind(e),
+      todoFormInfoRender.bind(e)
+    ];
+
+    formMethodsName.forEach((methodName, methodIndex) =>
+      methodName === fnName ? formMethods[methodIndex]() : ""
+    );
   }
 }
