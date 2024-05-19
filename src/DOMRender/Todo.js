@@ -117,7 +117,7 @@ export default class Todo {
   }
 
   static todoUpdatePageRender(headerName, projectName) {
-    const headerText = ["All To-Do Tasks", "Today", "Next 7 day"];
+    const headerText = ["All To-Do Tasks", "Today", "Next 7 Day"];
     const updateFunction = [
       Todo.todoLoaderInvoke,
       Todo.todoTodayLoader,
@@ -127,7 +127,7 @@ export default class Todo {
     let isProjectPage = true;
   
     headerText.forEach((name, index) => {
-      if (name === headerName) {
+      if (name.toLowerCase() === headerName.toLowerCase()) {
         updateFunction[index]();
         isProjectPage = false;
       }
