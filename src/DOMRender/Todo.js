@@ -115,4 +115,26 @@ export default class Todo {
       methodName === fnName ? formMethods[methodIndex]() : ""
     );
   }
+
+  static todoUpdatePageRender(headerName, projectName) {
+    const headerText = ["All To-Do Tasks", "Today", "Next 7 day"];
+    const updateFunction = [
+      Todo.todoLoaderInvoke,
+      Todo.todoTodayLoader,
+      Todo.todoNextWeekLoader,
+    ];
+  
+    let isProjectPage = true;
+  
+    headerText.forEach((name, index) => {
+      if (name === headerName) {
+        updateFunction[index]();
+        isProjectPage = false;
+      }
+    });
+  
+    if (isProjectPage) {
+      Todo.todoLoaderInvoke(projectName);
+    }
+  }
 }

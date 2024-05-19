@@ -107,7 +107,10 @@ function todoFormUpdate(project, title, priority) {
       editFormDuedate.value,
       editFormPriority.textContent
     );
-    Todo.todoLoaderInvoke();
+    Todo.todoUpdatePageRender(
+      document.querySelector(".header").textContent,
+      project
+    );
   });
 }
 
