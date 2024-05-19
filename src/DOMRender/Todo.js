@@ -42,6 +42,7 @@ export default class Todo {
   }
 
   static todoTodayLoader() {
+    Todo.todoItemsClear();
     const content = document.querySelector(".content");
     const listOfTodo = createDOMElement("div", "todo__items-list");
     beforeAppearDOMElement(content, listOfTodo);
@@ -59,6 +60,7 @@ export default class Todo {
   }
 
   static todoNextWeekLoader() {
+    Todo.todoItemsClear();
     const content = document.querySelector(".content");
     const listOfTodo = createDOMElement("div", "todo__items-list");
     beforeAppearDOMElement(content, listOfTodo);
